@@ -61,23 +61,39 @@
     }
 
 
-#base-red{
+/*#base-red{
 	margin-top:10px;
 }
-#base-red .bing{
-	background-color:orange;
-	border-color:orange;
-	-moz-transform:rotate(108deg);
-	-webkit-transform:rotate(108deg);
-	-o-transform:rotate(108deg);
-	transform:rotate(108deg);
+#base-blue{
+	margin-top:10px;
 }
+#base-green{
+  margin-top:10px;
+}*/
+#base-red .bing{
+	background-color:red;
+	border-color:red;
+	-moz-transform:rotate(216deg);
+	-webkit-transform:rotate(216deg);
+	-o-transform:rotate(216deg);
+	transform:rotate(216deg);
+}
+#base-green .bing{background-color:green;border-color:green;-moz-transform:rotate(144deg);-webkit-transform:rotate(144deg);-o-transform:rotate(144deg);transform:rotate(144deg);}
+#base-blue .bing{background-color:blue;border-color:blue;-moz-transform:rotate(108deg);-webkit-transform:rotate(108deg);-o-transform:rotate(108deg);transform:rotate(108deg);}
 
 .colorWheel {
   position: relative;
   width: 16em;
   height: 16em;
-  background: linear-gradient(36deg, #7c1 42%, transparent 42%),linear-gradient(72deg, #999 75.48%, transparent 75.48% ),linear-gradient(-36deg, #479bf6 42%, transparent 42%) 100% 0,linear-gradient(-72deg, yellow 75.48%, transparent 75.48%) 100% 0,linear-gradient(-36deg, transparent 58%, #643 58%) 0 100%,linear-gradient(-72deg, transparent 24.52%, #8a1 24.52%) 0 100%,linear-gradient(36deg, transparent 58%, #90a 42%) 100% 100%,linear-gradient(72deg,transparent 24.52%, #099 24.52%) 100% 100%,#43a1cd linear-gradient(#ba3e2e, #ba3e2e) 50% 0;
+  background: 
+  linear-gradient(36deg, #7c1 42%, transparent 42%),
+  linear-gradient(72deg, #999 75.48%, transparent 75.48% ),
+  linear-gradient(-36deg, #479bf6 42%, transparent 42%) 100% 0,
+  linear-gradient(-72deg, yellow 75.48%, transparent 75.48%) 100% 0,
+  linear-gradient(-36deg, transparent 58%, #643 58%) 0 100%,
+  linear-gradient(-72deg, transparent 24.52%, #8a1 24.52%) 0 100%,
+  linear-gradient(36deg, transparent 58%, #90a 42%) 100% 100%,
+  linear-gradient(72deg,transparent 24.52%, #099 24.52%) 100% 100%,#43a1cd linear-gradient(#ba3e2e, #ba3e2e) 50% 0;
   background-repeat: no-repeat;
   background-size: 50% 50%;
   border:1px solid #ccc;
@@ -95,6 +111,56 @@
   background-size: 50% 50%;
   border-radius: 50%;
 }
+.pie{
+  overflow:hidden;
+  width: 300px;
+  height: 300px;
+  background-color: yellowgreen;
+  border-radius:50%;
+  background-image:linear-gradient(to right,transparent 50%,#655 0);
+ }
+
+
+.pie::before{
+  content:'';
+  display:block;
+  margin-left:50%;
+  height:100%; 
+  /*background:#655;*/
+  /*border-radius:0 100% 100% 0/50%;*/
+  transform-origin:left;
+  transform:rotate(36deg);
+  border-radius:0 100% 100 0/50%;
+
+  background:yellowgreen;
+
+  animation:scoll 3s linear infinite,bg 5s step-end infinite;
+  animation-delay:-1s;
+  animation-play-state:paused;
+ }
+
+ /*.pie::before{
+  content:'';
+  display:block;
+  margin-left:50%;
+  height:100%; 
+  background:yellowgreen;
+  border-radius:0 100% 100% 0/50%;
+  transform-origin:left;
+  transform:rotate(108deg);
+ }*/
+
+ @keyframes scoll{
+
+  to{transform:rotate(180deg);}
+ }
+
+@keyframes bg{
+
+  50%{background:#655;}
+}
+
+
     </style>
   </head>
   <body>
@@ -103,9 +169,12 @@
         <p>Missing content</p>
       {% endblock %}
     </section>
-
-    <div class="colorWheel">
+<!--100*Math.sin(36*Math.PI/180)/(Math.sqrt(2)*Math.cos(9*Math.PI/180))
+42.08077798377318 第一个参数为角度，如图中将圆分为10等分，那么角度为360/10=36°，“度”用deg表示。
+为了出现颜色骤停的直线而不是渐变色，在颜色过渡位置使用了属性值transparent。
+百分比计算的是颜色所占整个区域的面积，计算公式为：100*sin36/(sqrt(2)*cos9)-->
+    <!--<div class="colorWheel">
       <div class="piece"></div>
-  </div>
+  </div>-->
   </body>
 </html>
