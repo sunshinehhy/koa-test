@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Posts
+{% endblock %}
+
+{% block content %}
+  
+  <h1>Posts</h1>
+  <p>
+    You have <strong>{{ posts.length }}</strong> posts!
+  </p>
+  <p>
+    <a href="/post/new">
+      Create a Post
+    </a>
+  </p>
+  <ul id="posts">
+    {% for post in posts %}
+      <li>
+        <h2>{{ post.title }}</h2>
+        <p>
+          <a href="/post/{{post.id}}">
+            Read post
+          </a>
+        </p>
+      </li>
+    {% endfor %}
+  </ul>
+
+  <span style="font-size:12px;"><div id="base-red" class="part">
+    <div <span style="font-family: Arial, Helvetica, sans-serif;">class</span><span style="font-family: Arial, Helvetica, sans-serif;">="bing">红队<span>30%</span></span>
+  </div>
+  <div id="base-blue" class="part">
+    <div <span style="font-family: Arial, Helvetica, sans-serif;">class</span>="bing">蓝队<span>30%</span>
+  </div>
+  <div id="base-green" class="part">
+    <div class="bing">绿队<span>30%</span>
+  </div></span>
+{% endblock %}
